@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Built application files
 *.apk
 *.ap_
@@ -55,6 +56,8 @@ freeline.py
 freeline/
 freeline_project_description.json
 =======
+=======
+>>>>>>> 586345d6160423fb59a19fb477d4efd22bb93ed0
 *.iml
 .gradle
 /local.properties
@@ -64,4 +67,7 @@ freeline_project_description.json
 /build
 /captures
 .externalNativeBuild
+<<<<<<< HEAD
 >>>>>>> Uploaded blank project
+=======
+>>>>>>> 586345d6160423fb59a19fb477d4efd22bb93ed0
