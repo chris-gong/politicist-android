@@ -1,6 +1,9 @@
 package com.csg.android.politicist;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,5 +16,24 @@ public class GameActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
+        SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(swipeAdapter);
+    }
+    public class SwipeAdapter extends FragmentStatePagerAdapter{
+        public SwipeAdapter(FragmentManager fm){
+            super(fm);
+        }
+        @Override
+        public Fragment getItem(int i){
+            Fragment fragment = new ImageFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("count", i+1);
+            fragment.setArguments(bundle);
+            return fragment;
+        }
+        @Override
+        public int getCount(){
+            return 5;
+        }
     }
 }
