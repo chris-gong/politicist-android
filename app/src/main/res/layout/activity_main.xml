@@ -7,8 +7,17 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context="com.csg.android.politicist.MainActivity">
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stufffffffffffffffff"/>
+        android:text="Politicist"
+        android:layout_marginBottom="120dp"
+        android:textSize="50sp"/>
+    <Button
+        android:id="@+id/play_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        android:text="Play" />
 </LinearLayout>
