@@ -11,16 +11,16 @@ import android.util.Log;
 
 public class GameActivity extends FragmentActivity {
 
-    ViewPager viewPager;
+    ViewPager mViewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        mViewPager = (ViewPager) findViewById(R.id.view_pager);
         SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(swipeAdapter);
+        mViewPager.setAdapter(swipeAdapter);
         // set the page to the middle page because the user will have to swipe left and right
-        viewPager.setCurrentItem(1);
+        mViewPager.setCurrentItem(1);
     }
     public class SwipeAdapter extends FragmentStatePagerAdapter{
         public SwipeAdapter(FragmentManager fm){

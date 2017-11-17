@@ -12,8 +12,8 @@ import android.widget.ImageView;
 
 
 public class ImageFragment extends Fragment {
-    ImageView image;
-
+    ImageView mImage;
+    private int[] imageIds = {R.drawable.ic_star}; //array to hold ids of images to be loaded into the fragment
     public ImageFragment() {
         // Required empty public constructor
     }
