@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 public class GameActivity extends FragmentActivity {
 
@@ -27,13 +28,13 @@ public class GameActivity extends FragmentActivity {
         public Fragment getItem(int i){
             Fragment fragment = new ImageFragment();
             Bundle bundle = new Bundle();
-            bundle.putInt("count", i+1);
             fragment.setArguments(bundle);
             return fragment;
         }
         @Override
         public int getCount(){
-            return 5;
+            // method used to return the number of pages
+            return 3;
         }
     }
 }

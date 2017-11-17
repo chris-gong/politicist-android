@@ -21,8 +21,12 @@ public class ImageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Bundle arguments can be retrieved here
+        Bundle args = getArguments();
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_image, container, false);
+
+
     }
 
 }
