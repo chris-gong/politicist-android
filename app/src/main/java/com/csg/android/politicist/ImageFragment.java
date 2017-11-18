@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 public class ImageFragment extends Fragment {
     ImageView mImage;
-    private int[] imageIds = {0, R.drawable.ic_star, 2}; //array to hold ids of images to be loaded into the fragment
+    private int[] imageIds = {R.drawable.ic_democrat, R.drawable.ic_politician, R.drawable.ic_republican}; //array to hold ids of images to be loaded into the fragment
     public ImageFragment() {
 
     }
