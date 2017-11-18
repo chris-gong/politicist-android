@@ -30,6 +30,8 @@ public class GameActivity extends FragmentActivity {
         public Fragment getItem(int i){
             Fragment fragment = new ImageFragment();
             Bundle bundle = new Bundle();
+            Log.d("GameActivity", String.valueOf(i));
+            bundle.putInt("pageNum", i);
             fragment.setArguments(bundle);
             return fragment;
         }
