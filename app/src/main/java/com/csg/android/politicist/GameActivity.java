@@ -1,5 +1,6 @@
 package com.csg.android.politicist;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentActivity;
@@ -7,6 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.*;
 import android.util.Log;
 
 public class GameActivity extends FragmentActivity {
@@ -34,6 +36,16 @@ public class GameActivity extends FragmentActivity {
                 // when the user swipes to an fragment with an answer image, then disable swiping
                 if(position % 2 == 0){
                     mViewPager.setSwipeable(false);
+                    // after 3 seconds, redirect the user to the main activity
+                    // note that this way only works well on the UI thread
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run(){
+                            Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                    }, 3000);
                 }
             }
 
