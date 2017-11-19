@@ -45,8 +45,16 @@ public class ImageFragment extends Fragment {
                 public void onFinish(){
                     // once time runs out, move on to the next question
                     // for now, just go back to the main activity
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
+                    // try catch block is needed in the cases where the user presses
+                    // the back button or leaves the app to do other stuff after
+                    // going on to the game activity page
+                    try{
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
             }.start();
         }
