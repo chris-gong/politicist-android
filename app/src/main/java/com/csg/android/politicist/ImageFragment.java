@@ -41,14 +41,7 @@ public class ImageFragment extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState){
-        super.onActivityCreated(savedInstanceState);
-        // mTimer is only initialized for the fragment containing the politician image
-        if(mTimer != null){
-            Log.d("ImageFragment", "onActivityCreated 1");
-        }
-    }
+
     @Override
     public void onStart(){
         super.onStart();
