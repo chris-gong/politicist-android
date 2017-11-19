@@ -11,17 +11,37 @@ import android.util.Log;
 
 public class GameActivity extends FragmentActivity {
 
-    ViewPager mViewPager;
+    GameViewPager mViewPager;
+    private SwipeAdapter swipeAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         Log.d("GameActivity", "Line 19: Activity Created");
-        mViewPager = (ViewPager) findViewById(R.id.view_pager);
-        SwipeAdapter swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
+        mViewPager = (GameViewPager) findViewById(R.id.view_pager);
+        swipeAdapter = new SwipeAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(swipeAdapter);
         // set the page to the middle page because the user will have to swipe left and right
         mViewPager.setCurrentItem(1);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                // when the user swipes to an fragment with an answer image, then disable swiping
+                if(position % 2 == 0){
+                    mViewPager.setSwipeable(false);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
     public class SwipeAdapter extends FragmentStatePagerAdapter{
         public SwipeAdapter(FragmentManager fm){

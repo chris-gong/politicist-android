@@ -17,10 +17,12 @@ import android.widget.TextView;
 public class ImageFragment extends Fragment {
     ImageView mImage;
     TextView mTimer;
+    private CountDownTimer clock;
     private int[] imageIds = {R.drawable.ic_democrat, R.drawable.ic_politician, R.drawable.ic_republican}; //array to hold ids of images to be loaded into the fragment
     public ImageFragment() {
         mImage = null;
         mTimer = null;
+        clock = null;
     }
 
     @Override
@@ -34,7 +36,6 @@ public class ImageFragment extends Fragment {
         int imageId = imageIds[pageNum];
         if(pageNum == 1){
             mTimer = (TextView) view.findViewById(R.id.time_display);
-
         }
         Log.d("ImageFragment", String.valueOf(imageId));
         mImage.setImageResource(imageId);
@@ -50,7 +51,7 @@ public class ImageFragment extends Fragment {
             Log.d("ImageFragment", "onStart 1");
             mTimer.setText("15");
             // initialize countdowntimer if the fragment selected was the politician fragment
-            CountDownTimer clock = new CountDownTimer(15 * 1000, 1000){
+            clock = new CountDownTimer(15 * 1000, 1000){
                 @Override
                 public void onTick(long millisUntilFinished){
                     // every second, decrement the text showing in mTimer
@@ -73,6 +74,17 @@ public class ImageFragment extends Fragment {
                     }
                 }
             }.start();
+        }
+    }
+
+    // this method is called before onCreateView where isVisibleToUser starts out as false
+    // then the method is called later whenever a fragment changes visibility state
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser){
+        super.setUserVisibleHint(isVisibleToUser);
+        Log.d("ImageFragment", "setUserVisibleHint " + isVisibleToUser + " " + clock);
+        if(clock != null && !isVisibleToUser){
+            clock.cancel();
         }
     }
 }
