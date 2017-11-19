@@ -19,7 +19,8 @@ public class ImageFragment extends Fragment {
     TextView mTimer;
     private int[] imageIds = {R.drawable.ic_democrat, R.drawable.ic_politician, R.drawable.ic_republican}; //array to hold ids of images to be loaded into the fragment
     public ImageFragment() {
-
+        mImage = null;
+        mTimer = null;
     }
 
     @Override
@@ -28,18 +29,40 @@ public class ImageFragment extends Fragment {
         // Bundle arguments can be retrieved here
         View view = inflater.inflate(R.layout.fragment_image, container, false);
         mImage = (ImageView) view.findViewById(R.id.image_display);
-        mTimer = (TextView) view.findViewById(R.id.time_display);
         Bundle args = getArguments();
         int pageNum = args.getInt("pageNum");
         int imageId = imageIds[pageNum];
         if(pageNum == 1){
-            // initialize countdowntimer if the fragment selected was the politician fragment
+            mTimer = (TextView) view.findViewById(R.id.time_display);
+
+        }
+        Log.d("ImageFragment", String.valueOf(imageId));
+        mImage.setImageResource(imageId);
+        // Inflate the layout for this fragment
+        return view;
+    }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+        // mTimer is only initialized for the fragment containing the politician image
+        if(mTimer != null){
+            Log.d("ImageFragment", "onActivityCreated 1");
+        }
+    }
+    @Override
+    public void onStart(){
+        super.onStart();
+        // mTimer is only initialized for the fragment containing the politician image
+        if(mTimer != null){
+            Log.d("ImageFragment", "onStart 1");
             mTimer.setText("15");
+            // initialize countdowntimer if the fragment selected was the politician fragment
             CountDownTimer clock = new CountDownTimer(15 * 1000, 1000){
                 @Override
                 public void onTick(long millisUntilFinished){
                     // every second, decrement the text showing in mTimer
                     mTimer.setText("" + millisUntilFinished/1000);
+                    Log.d("ImageFragment", "millisUntilFinished: " + millisUntilFinished);
                 }
                 @Override
                 public void onFinish(){
@@ -58,12 +81,5 @@ public class ImageFragment extends Fragment {
                 }
             }.start();
         }
-        Log.d("ImageFragment", String.valueOf(imageId));
-        mImage.setImageResource(imageId);
-        // Inflate the layout for this fragment
-        return view;
-
-
     }
-
 }
